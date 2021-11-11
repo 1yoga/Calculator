@@ -72,23 +72,6 @@ namespace Calculator.Test
 
             Assert.Equal(expectedOutput, Regex.Replace(outputPoint.ToString(), @"[\r\t\n]+", string.Empty));
         }
-        [Fact]
-        public void ShouldBeReturnMathError()
-        {
-            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
-
-            var outputPoint = new StringWriter();
-            Console.SetOut(outputPoint);
-
-            string[] inputStringArray = new[] { "4", "0", "d", "n" };
-            var inputString = string.Join("\r\n", inputStringArray);
-            var inputPoint = new StringReader(inputString);
-            Console.SetIn(inputPoint);
-
-            Program.Main(new string[0]);
-            var expectedOutput = "Oh no! An exception occurred trying to do the math";
-
-            Assert.True(Regex.IsMatch(outputPoint.ToString(), expectedOutput));
-        }
+        
     }
 }
